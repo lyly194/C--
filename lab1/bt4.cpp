@@ -17,7 +17,7 @@ int main()
     displayArray(numbers_reversed, ARRAY_SIZE);
 
     delete [] numbers_reversed;
-    numbers_reversed = nullptr; // 0x0
+    numbers_reversed = nullptr;
 
     return 0;
 }

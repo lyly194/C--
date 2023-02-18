@@ -14,7 +14,7 @@ int main()
     cout << "Nhap c = ";
     cin >> c;
     if(a == 0) {
-        // a== 0 phuong trinh tro thanh phuong trinh bac mot bx + c = 0
+        
         if(b == 0) {
             if (c == 0) {
                 cout << "Phuong trinh vo so nghiem" << endl;

@@ -21,7 +21,7 @@ double findMedian(int array[], const int SIZE)
     if (SIZE % 2 != 0)
     {
         median = *(array + (SIZE / 2));
-        // median = array[SIZE / 2];
+    
     }
     else
         median = (*(array + ((SIZE - 1) / 2)) + *(array + (SIZE / 2))) / 2.0;
