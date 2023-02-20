@@ -6,27 +6,27 @@ int main()
         H,
         distance = 0;
 
-    cout << "Hãy nhập tốc độ mà bạn đi: ";
+    cout << "Hay nhap toc do cua ban di: ";
     while(!(cin >> S) || (S < 0))
     {
-        cout << "LỖI: số tốc độ phải là \n"
-             << "lớn hơn 0 \n"
+        cout << "LOI: so toc do phai la: \n"
+             << "lon hon 0 \n"
              << endl;
         cin.clear();
         cin.ignore(1200, '\n');
     }
 
-    cout << "Hãy nhập số giờ bạn đi: ";
+    cout << "Hay nhap so gio bam di: ";
     while(!(cin >> H) || (H < 1))
     {
-        cout << "LỖI: số giờ đã di chuyển phải là \n"
-             << "lớn hơn 1 \n"
+        cout << "LOI: so gio ban phai di la \n"
+             << "Lon hon 1 \n"
              << endl;
         cin.clear();
         cin.ignore(1200, '\n');
     }
 
-    cout << "Hour Distance Traveled " << endl;
+    cout << "Gio va quang duong ban da di duoc la: " << endl;
 
     for(int i = 0; i < H; i++)
     {
