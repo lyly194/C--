@@ -1,114 +1,86 @@
 #include <iostream>
 #include <fstream>
-#include <cstdlib> // for exit() function
-
 using namespace std;
 
-// Function prototypes
-double calculateCh(int days, double dailyRate, double medCharges, double servCharges);
-double calculateCh(double medCharges, double servCharges);
-int main()
-{
-    char patientType; // To store patient type
-    int days; // To store number of days
-    double rate, meds, services, totalCharges;
+float inPatientCharges(int days, float rate, float medCharges, float servCharges) {
+    float totalCharges = days * rate + medCharges + servCharges;
+    return totalCharges;
+}
 
-    // Open file for writing
-    ofstream outFile("hospital_report.txt");
+float outPatientCharges(float medCharges, float servCharges) {
+    float totalCharges = medCharges + servCharges;
+    return totalCharges;
+}
 
-    // Check if file is successfully opened
-    if (!outFile)
-    {
-        cout << "Error opening file. Program terminated.\n";
-        exit(1);
-    }
+int main() {
+    ofstream outputFile;
+    outputFile.open("bao_cao.txt");
 
-    // Ask user for patient type
-    cout << "Was the patient admitted as an in-patient (I) or an out-patient (O)? ";
-    cin >> patientType;
+    int choice, days;
+    float rate, medCharges, servCharges, totalCharges;
 
-    // Input validation for patient type
-    while (toupper(patientType) != 'I' && toupper(patientType) != 'O')
-    {
-        cout << "Invalid input. Please enter I for in-patient or O for out-patient: ";
-        cin >> patientType;
-    }
+    cout << "Nhap 1 neu benh nhan la benh nhan noi tru, 2 neu benh nhan la benh nhan ngoai tru: ";
+    cin >> choice;
 
-    // If patient is an in-patient
-    if (toupper(patientType) == 'I')
-    {
-        // Get number of days spent in hospital
-        cout << "Enter the number of days spent in the hospital: ";
+    if (choice == 1) {
+        cout << "Nhap so ngay nam vien: ";
         cin >> days;
 
-        // Input validation for number of days
-        while (days < 0)
-        {
-            cout << "Invalid input. Please enter a positive number of days: ";
+        while (days < 0) {
+            cout << "Khong chap nhan so ngay am. Vui long nhap lai: ";
             cin >> days;
         }
 
-        // Get daily rate
-        cout << "Enter the daily rate: ";
+        cout << "Nhap ty gia hang ngay: ";
         cin >> rate;
 
-        // Input validation for daily rate
-        while (rate < 0)
-        {
-            cout << "Invalid input. Please enter a positive daily rate: ";
+        while (rate < 0) {
+            cout << "Khong chap nhan ty gia am. Vui long nhap lai: ";
             cin >> rate;
         }
 
-        // Get hospital medication charges
-        cout << "Enter the hospital medication charges: ";
-        cin >> meds;
+        cout << "Nhap vien phi: ";
+        cin >> medCharges;
 
-        // Input validation for medication charges
-        while (meds < 0)
-        {
-            cout << "Invalid input. Please enter a positive amount for hospital medication charges: ";
-            cin >> meds;
+        while (medCharges < 0) {
+            cout << "Khong chap nhan vien phi am. Vui long nhap lai: ";
+            cin >> medCharges;
         }
 
-        // Get hospital services charges
-        cout << "Enter the hospital services charges: ";
-        cin >> services;
+        cout << "Nhap phi dich vu benh vien: ";
+        cin >> servCharges;
 
-        // Input validation for hospital services charges
-        while (services < 0)
-        {
-            cout << "Invalid input. Please enter a positive amount for hospital services charges: ";
-            cin >> services;
+        while (servCharges < 0) {
+            cout << "Khong chap nhan phi dich vu am. Vui long nhap lai: ";
+            cin >> servCharges;
         }
 
-        // Calculate total charges for in-patient
-        totalCharges = calculateCharges(days, rate, meds, services);
+        totalCharges = inPatientCharges(days, rate, medCharges, servCharges);
     }
-    // If patient is an out-patient
-    else
-    {
-        // Get hospital medication charges
-        cout << "Enter the hospital medication charges: ";
-        cin >> meds;
+    else if (choice == 2) {
+        cout << "Nhap vien phi: ";
+        cin >> medCharges;
 
-        // Input validation for medication charges
-        while (meds < 0)
-        {
-            cout << "Invalid input. Please enter a positive amount for hospital medication charges: ";
-            cin >> meds;
+        while (medCharges < 0) {
+            cout << "Khong chap nhan vien phi am. Vui long nhap lai: ";
+            cin >> medCharges;
         }
 
-        // Get hospital services charges
-        cout << "Enter the hospital services charges: ";
-        cin >> services;
+        cout << "Nhap phi dich vu benh vien: ";
+        cin >> servCharges;
 
-        // Input validation for hospital services charges
-        while (services < 0)
-        {
-            cout << "Invalid input. Please enter a positive amount for hospital services charges: ";
-            cin >> services;
+        while (servCharges < 0) {
+            cout << "Khong chap nhan phi dich vu am. Vui long nhap lai: ";
+            cin >> servCharges;
         }
 
-        // Calculate total charges for out-patient
-        totalCharges = calculateCh
-    }}
+        totalCharges = outPatientCharges(medCharges, servCharges);
+    }
+    else {
+        cout << "Lua chon khong hop le. Ket thuc chuong trinh.";
+        return 0;
+    }
+
+    outputFile << "Tong chi phi la: $" << totalCharges << endl;
+    cout << "Bao cao da duoc ghi vao file bao_cao.txt" << endl;
+}
