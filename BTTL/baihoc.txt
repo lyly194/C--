@@ -1,0 +1,13 @@
+con trỏ là lưu trử địa chỉ 
+&: là toán tử lấy địa chỉ
+*: là toán tử lấy giá trị
+các phép toán trên con trỏ 
+cd: ptr++ : là dịch qua phải 4 bits
+    ptr-- : là dịch qua trái 4 bits
+    ptr+ =3 : là dịch qua phải 12 bits
+(tùy thuộc vào kiểu dữ liệu 
+int, float: 4 bits
+char: 1 bits
+double: 8 bits)
+muốn cấp phát bộ nhớ là dùng "new" xóa thì "delete"
+biên dịch nhiều file cùng một lần?
