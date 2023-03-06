@@ -5,20 +5,20 @@ int main()
 {
     int num, sum = 0;
 
-    cout << "Input the number of elements to store in the array (max 10) : ";
+    cout << "Nhap so luong phan tu can luu tru trong mang(toi da 10) : ";
     cin >> num;
 
     int arr[num];
 
-    cout << "Input " << num << " number of elements in the array:" << endl;
+    cout << "Nhap vào " << num << " so phan tu cua mang" << endl;
     for(int i=0; i<num; i++)
     {
-        cout << "element - " << i+1 << " : ";
+        cout << "Phan tu - " << i+1 << " : ";
         cin >> *(arr+i);
         sum += *(arr+i);
     }
 
-    cout << "The sum of array is : " << sum;
+    cout << "Tong cua mang la: " << sum;
 
     return 0;
 }
